@@ -149,6 +149,7 @@ margin-bottom: 1rem;
   padding: 8px 12px;
   outline: none;
   font-size: 16px;
+  font-weight: 600;
   border-radius: 4px;
   background-color: transparent;
   color: #071D55;
@@ -160,12 +161,18 @@ margin-bottom: 1rem;
   bottom: 2%;
   right: 2%;
   cursor: pointer;
-  font-weight: 700;
-  padding: 20px;
+  font-weight: 500;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
   background-color: #3556AB;
   border: 2px solid #123EB1;
   color: white;
   font-size: 32px;
+  width: 60px;
+  height: 60px; 
+  border-radius: 50%;
 }
 
 .action-btns {
