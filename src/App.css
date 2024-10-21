@@ -1,0 +1,215 @@
+.App {
+  width: 100%;
+  height: 100vh;
+}
+
+.App .todo-app-wrapper{
+  display: flex;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+}
+
+.todo-app-wrapper section:nth-child(1) {
+  width: 30%;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  background-color: #F3F3F3;
+  box-shadow: 11px 6px 10px -6px rgba(0,0,0,0.22);
+  -webkit-box-shadow: 11px 6px 10px -6px rgba(0,0,0,0.22);
+  -moz-box-shadow: 11px 6px 10px -6px rgba(0,0,0,0.22);
+}
+
+.todo-app-wrapper section:nth-child(2) {
+  width: 70%;
+  position: relative;
+  height: 100%;
+}
+
+.todo-app-wrapper section .top-container {
+  padding: 1rem 2rem;
+  background-color: #3556ab;
+  height: 70px;
+}
+.todo-app-wrapper section:nth-child(1) .top-container {
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+  color: white;
+}
+.todo-app-wrapper section:nth-child(1) .top-container .name {
+  font-size: 16px;
+  font-weight: 500;
+}
+.todo-app-wrapper section:nth-child(1) .top-container .subtitle {
+  font-size: 25px;
+  font-weight: 100;
+  font-style: italic;
+}
+.todo-app-wrapper section:nth-child(2) .top-container{
+width: 100%;
+color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 1rem;
+}
+
+.todo-app-wrapper section:nth-child(2) .add-input-wrapper {
+  padding: 0 2rem;
+}
+.todo-app-wrapper section:nth-child(2) label {
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.todo-app-wrapper section:nth-child(2) input{
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 1rem;
+  width: 80%;
+  outline: none;
+}
+
+.todo-app-wrapper section:nth-child(1) .top-container .img-wrapper {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.todo-app-wrapper section:nth-child(1) .top-container .img-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+.todo-app-wrapper section:nth-child(1) .trophy-container {
+  display: flex;
+  background-color: #CDE53D;
+  padding: 2rem 3rem;
+  align-items: center;
+  position: relative;
+  color: #071D55;
+  font-weight: 600;
+}
+.todo-app-wrapper section:nth-child(1) .trophy-container img {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+.todo-app-wrapper section:nth-child(1) .trophy-container .price-tag {
+  position: absolute;
+  background-color: #071D55;
+  padding: 15px;
+  top: 0;
+  right: 5%;
+  color: #F2C94C;
+}
+
+.todo-app-wrapper section:nth-child(1) ul {
+  list-style: none;
+  margin: auto;
+  padding: 1rem 0;
+  display: flex;
+  height: 60vh;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  overflow-y: scroll;
+}
+
+.todo-app-wrapper section:nth-child(1) ul li {
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  width: 70%;
+  box-shadow: 5px 6px 10px -1px rgba(0,0,0,0.29);
+  -webkit-box-shadow: 5px 6px 10px -1px rgba(0,0,0,0.29);
+  -moz-box-shadow: 5px 6px 10px -1px rgba(0,0,0,0.29);
+}
+.todo-app-wrapper section:nth-child(1) ul li span {
+  flex: 1;
+  margin-left: 5px;
+  text-align: left;
+}
+
+.todo-app-wrapper section:nth-child(1) ul .completed span{
+  color: #8D8D8D;
+}
+ 
+.todo-app-wrapper section:nth-child(1) ul li button {
+  border: 1px solid ;
+  padding: 8px 12px;
+  outline: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addBtn {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  cursor: pointer;
+}
+
+.action-btns {
+  position: absolute;
+  left: 13%;
+  bottom: 2%;
+  align-items: center;
+  display: flex;
+  width: 80%;
+  gap: 1rem;
+}
+
+.action-btns button {
+  border-radius: 5px;
+  padding: 1rem;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.action-btns button:nth-child(1) {
+  background-color: #AB3535;
+  border: 1px solid #720D0D;
+}
+
+.action-btns button:nth-child(2) {
+  background-color: #3556AB;
+  border: 1px solid #0D2972;
+  flex: 1;
+}
+
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%; 
+  border: 2px solid #ccc; 
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  background-color: #f0f0f0; 
+}
+
+.custom-checkbox:checked {
+  background-color: #4CAF50; 
+  padding: 4px;
+}
+
+.custom-checkbox:checked::before {
+  content: '✔'; 
+  color: black; 
+    font-size: 12px; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
