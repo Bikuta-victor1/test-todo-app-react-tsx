@@ -4,31 +4,38 @@ import AddBtn from "./components/icons/addBtn";
 
 // Define the structure of a Task object
 interface Task {
-  id: number; 
-  text: string; 
-  completed: boolean; 
-  selected: boolean; 
+  id: number; // Unique ID for each task
+  text: string; // The task description
+  completed: boolean; // Whether the task is marked as completed
+  selected: boolean; // Whether the task is selected for deletion
 }
 
 const App: React.FC = () => {
+  // State to hold the list of tasks
   const [tasks, setTasks] = useState<Task[]>([]);
+
   const [currTask, setCurrTask] = useState<Task | null>(null);
+  // State to manage the input for a new task
   const [newTask, setNewTask] = useState<string>("");
+  // State to manage editing mode (stores task ID of the task being edited)
   const [isEditing, setIsEditing] = useState<number | null>(null);
+  // State to manage the input while editing a task
   const [editTask, setEditTask] = useState<string>("");
 
   // Function to add a new task to the list
   const addTask = () => {
     if (newTask.trim()) {
+      // Ensure the input is not empty
+      // Create a new task and update the task list
       setTasks([
         ...tasks,
         { id: Date.now(), text: newTask, completed: false, selected: false },
       ]);
-      setNewTask("");
+      setNewTask(""); // Clear the input field after adding
     }
   };
 
-  // Function to toggle the completion state of a task
+  // Function to toggle the completion state of a task (check/uncheck)
   const toggleTaskCompletion = (taskId: number) => {
     setTasks(
       tasks.map((task) =>
@@ -37,30 +44,32 @@ const App: React.FC = () => {
     );
   };
 
-  // Function to start editing a task
+  // Function to start editing a task (sets the task in editing mode)
   const startEditing = (taskId: number, taskText: string) => {
-    setIsEditing(taskId);
-    setEditTask(taskText);
+    setIsEditing(taskId); // Set the task as being edited
+    setEditTask(taskText); // Set the current task text in the input field
   };
 
   // Function to save the edited task
   const saveEdit = (taskId: number) => {
     if (editTask.trim()) {
+      // Ensure the edit input is not empty
+      // Update the task text in the task list
       setTasks(
         tasks.map((task) =>
           task.id === taskId ? { ...task, text: editTask } : task
         )
       );
-      setIsEditing(null);
+      setIsEditing(null); // Exit editing mode
     }
   };
 
   // Function to cancel editing mode
   const cancelEdit = () => {
-    setIsEditing(null);
+    setIsEditing(null); // Reset editing state
   };
 
-  // Function to toggle the selection state of a task
+  // Function to toggle the selection state of a task (select/deselect for deletion)
   const toggleSelection = (taskId: number) => {
     setTasks(
       tasks.map((task) =>
@@ -73,6 +82,7 @@ const App: React.FC = () => {
 
   // Function to delete all selected tasks
   const deleteSelectedTasks = () => {
+    // Filter out the selected tasks
     setTasks(tasks.filter((task) => !task.selected));
   };
 
@@ -94,12 +104,16 @@ const App: React.FC = () => {
             <p>Go Pro Upgrade Now</p>
             <div className="price-tag">$1</div>
           </div>
+          {/* Display list of tasks */}
           <ul>
             {tasks.map((task) => (
               <li
                 key={task.id}
-                className={task.completed ? "completed" : ""}
+                className={
+                  task.completed ? "completed" : ""
+                }
               >
+                {/* Checkbox to select/deselect the task */}
                 <input
                   type="checkbox"
                   checked={task.selected}
@@ -108,23 +122,29 @@ const App: React.FC = () => {
                   }}
                   className="custom-checkbox"
                 />
-                <>
-                  <span>{task.text}</span>
-                  <button
-                    onClick={() => {
-                      startEditing(task.id, task.text);
-                      setCurrTask(task);
-                    }}
-                  >
-                    Edit
-                  </button>
-                </>
+                  <>
+                    {/* Task text (click to toggle completion) */}
+                    <span>
+                      {task.text}
+                    </span>
+                    {/* Button to start editing the task */}
+                    <button
+                      onClick={() => {
+                        startEditing(task.id, task.text);
+                        setCurrTask(task);
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </>
               </li>
             ))}
           </ul>
+          {/* Input field and button to add a new task */}
           <div>
             <button className="addBtn" onClick={addTask}>
-              +
+                {/* <AddBtn/> */}
+                +
             </button>
           </div>
         </section>
@@ -133,30 +153,32 @@ const App: React.FC = () => {
           <div className="add-input-wrapper">
             <label>Task Name</label>
             {isEditing === currTask?.id ? (
-              <>
-                <input
-                  type="text"
-                  value={editTask}
-                  onChange={(e) => setEditTask(e.target.value)}
-                />
-              </>
+                  <>
+                    {/* Input field to edit task */}
+                    <input
+                      type="text"
+                      value={editTask}
+                      onChange={(e) => setEditTask(e.target.value)}
+                    />
+                  </>
             ) : (
               <input
-                type="text"
-                value={newTask}
-                onChange={(e) => setNewTask(e.target.value)}
-                placeholder="Add a new task"
-              />
-            )}
+              type="text"
+              value={newTask}
+              onChange={(e) => setNewTask(e.target.value)}
+              placeholder="Add a new task"
+            />
+            ) }
           </div>
-          <div className="action-btns">
-            {tasks.some((task) => task.selected) && (
-              <button onClick={deleteSelectedTasks}>Delete </button>
-            )}
-            {currTask && isEditing && (
-              <button onClick={() => saveEdit(currTask?.id)}>Save</button>
-            )}
-          </div>
+                {/* Delete button (only visible if there are selected tasks) */}
+      <div className="action-btns">
+        {tasks.some((task) => task.selected) && (
+          <button onClick={deleteSelectedTasks}>Delete </button>
+        )}
+        {currTask && isEditing &&(
+          <button onClick={() => saveEdit(currTask?.id)}>Save</button>
+        )}
+      </div>
         </section>
       </div>
     </div>
