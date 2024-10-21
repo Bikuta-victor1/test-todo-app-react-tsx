@@ -134,17 +134,24 @@ margin-bottom: 1rem;
   flex: 1;
   margin-left: 5px;
   text-align: left;
+  font-weight: 500;
+  font-size: 16px;
+  color: #071D55;
 }
 
 .todo-app-wrapper section:nth-child(1) ul .completed span{
   color: #8D8D8D;
+  text-decoration: line-through;
 }
  
 .todo-app-wrapper section:nth-child(1) ul li button {
-  border: 1px solid ;
+  border: 1px solid #071D55;
   padding: 8px 12px;
   outline: none;
+  font-size: 16px;
   border-radius: 4px;
+  background-color: transparent;
+  color: #071D55;
   cursor: pointer;
 }
 
@@ -153,6 +160,12 @@ margin-bottom: 1rem;
   bottom: 2%;
   right: 2%;
   cursor: pointer;
+  font-weight: 700;
+  padding: 20px;
+  background-color: #3556AB;
+  border: 2px solid #123EB1;
+  color: white;
+  font-size: 32px;
 }
 
 .action-btns {
@@ -191,7 +204,7 @@ margin-bottom: 1rem;
   width: 30px;
   height: 30px;
   border-radius: 50%; 
-  border: 2px solid #ccc; 
+  border: 2px solid #071D55; 
   outline: none;
   cursor: pointer;
   position: relative;
@@ -199,13 +212,13 @@ margin-bottom: 1rem;
 }
 
 .custom-checkbox:checked {
-  background-color: #4CAF50; 
+  background-color: #53DA69; 
   padding: 4px;
 }
 
 .custom-checkbox:checked::before {
   content: '✔'; 
-  color: black; 
+  color: #071D55; 
     font-size: 12px; 
   position: absolute;
   top: 50%;
